@@ -1,0 +1,12 @@
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+@media only screen and (max-width:375px) {
+  /* Estilos a serem aplicados quando a largura da tela for no máximo 600 pixels */
+  .content {
+    flex-direction: column;
+  }
+}
