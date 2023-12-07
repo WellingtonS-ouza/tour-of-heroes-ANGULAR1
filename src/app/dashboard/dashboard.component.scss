@@ -2,6 +2,12 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
+
+ 
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 @media only screen and (max-width:375px) {
