@@ -10,9 +10,12 @@
     </mat-expansion-panel-header>
     <p> <button mat-raised-button color="warn" (click)="messageService.clear()">Clear messages</button>
     </p>
-    <div *ngFor="let messages of messageService.getMessages()">
-      {{messages}}
-    </div>
+
+    <mat-list>
+      <mat-list-item *ngFor="let messages of messageService.getMessages()">{{messages}}</mat-list-item>
+
+    </mat-list>
+
   </mat-expansion-panel>
 
 </mat-accordion>
