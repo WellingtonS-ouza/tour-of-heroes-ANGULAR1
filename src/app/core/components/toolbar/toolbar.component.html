@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+
+  <span class="example-spacer"></span>
+  <button mat-icon-button [matTooltip]="menuItem.toolTipText" aria-label="menuItem.toolTipText"
+    [routerLink]="[menuItem.routerLink]" *ngFor="let menuItem of menuItems">
+    <mat-icon>{{menuItem.icon}}</mat-icon>
+  </button>
+
+</mat-toolbar>

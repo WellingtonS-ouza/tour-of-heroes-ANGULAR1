@@ -8,8 +8,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
-import { MaterialModule } from './material/material.module';
-import { MessagesComponent } from './messages/messages.component';
+import { CoreModule } from './core/core.module';
 
 
 
@@ -21,14 +20,13 @@ import { MessagesComponent } from './messages/messages.component';
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    MessagesComponent,
     DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    CoreModule,
     AppRoutingModule
   ],
   providers: [],

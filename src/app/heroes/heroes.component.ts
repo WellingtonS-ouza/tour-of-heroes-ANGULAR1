@@ -1,6 +1,6 @@
-import { MessageService } from './../message.service';
-import { HeroService } from './../hero.service';
-import { Hero } from './../hero.model';
+import { MessageService } from '../core/service/message.service';
+import { HeroService } from '../core/service/hero.service';
+import { Hero } from '../core/models/hero.model';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -13,7 +13,7 @@ export class HeroesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name']
 
   heroes: Hero[] = [];
-  
+
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
@@ -24,6 +24,6 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
- 
+
 
 }
