@@ -4,9 +4,10 @@ import { MaterialModule } from '../material/material.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const COMPONENTS = [
-  MessagesComponent, ToolbarComponent,
+  MessagesComponent, ToolbarComponent,PageNotFoundComponent
 ]
 
 const MODULES = [MaterialModule, RouterModule]
