@@ -10,6 +10,7 @@ import { HeroesComponent } from './heroes/components/heroes/heroes.component';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HeroesModule } from './heroes/heroes.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -25,8 +26,9 @@ import { HeroesModule } from './heroes/heroes.module';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
 
-    
+
     // app
     CoreModule,
     AppRoutingModule
