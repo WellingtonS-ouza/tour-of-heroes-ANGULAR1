@@ -7,9 +7,11 @@ import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { LoadingComponent } from './components/loading/loading.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 const COMPONENTS = [
-  MessagesComponent, ToolbarComponent, PageNotFoundComponent
+  MessagesComponent, ToolbarComponent, PageNotFoundComponent, LoadingComponent
 ]
 
 const MODULES = [MaterialModule, RouterModule]
@@ -22,7 +24,12 @@ const MODULES = [MaterialModule, RouterModule]
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi:true
+  },{
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptor,
+    multi:true
   }
+
   ]
 
 })
