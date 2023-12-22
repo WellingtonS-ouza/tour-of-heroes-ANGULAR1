@@ -3,6 +3,7 @@ import { HeroService } from '../../../core/service/hero.service';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../core/models/hero.model';
 import { Location } from '@angular/common';
+import { FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -13,7 +14,15 @@ import { Location } from '@angular/common';
 export class HeroDetailComponent implements OnInit {
 
   hero!: Hero;
+  isEditing!: boolean;
+
+  form = this.fb.group({
+    id:[{value:'', disabled:true}],
+    name:['', Validators.required]
+  })
+
   constructor(
+    private fb: FormBuilder,
     private heroService: HeroService,
     private location: Location,
     private route: ActivatedRoute
@@ -22,22 +31,38 @@ export class HeroDetailComponent implements OnInit {
     this.getHero();
   }
   getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.heroService.getOne(id).subscribe(hero => this.hero = hero);
+    const paramId = this.route.snapshot.paramMap.get('id')
+    if (paramId === "new") {
+      this.isEditing = false
+      this.hero = { name: "" } as Hero
+    } else {
+      this.isEditing = true
+      const id = Number(paramId);
+      this.heroService.getOne(id).subscribe(hero => this.hero = hero);
+    }
+
+
+
+
 
   }
   goBack(): void {
     this.location.back();
   }
 
-  save(): void {
+
+  isFormValid(): boolean {
+    return !this.hero.name.trim()
+  }
+
+  create(): void {
+    this.heroService.create(this.hero).subscribe(() => this.goBack())
+  }
+  update(): void {
     this.heroService.update(this.hero).subscribe(() => this.goBack())
   }
 
-  isFormValid(): boolean{
-    return !this.hero.name.trim()
-    }
 
 
 }

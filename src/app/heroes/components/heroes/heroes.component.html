@@ -1,8 +1,15 @@
 <h1>My Heroes</h1>
 
+<div class="content">
+  <button class="add-button" color="accent" mat-fab routerLink="new">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+
 <mat-table [dataSource]="heroes" class="mat-elevation-z8">
-    <!-- id -->
-  <ng-container matColumnDef="id" >
+  <!-- id -->
+  <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
     <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
   </ng-container>
@@ -17,5 +24,5 @@
 
   <!-- Header and Row Declarations -->
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns " [routerLink]="['/heroes', row.id]" ></mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns " [routerLink]="['/heroes', row.id]"></mat-row>
 </mat-table>
