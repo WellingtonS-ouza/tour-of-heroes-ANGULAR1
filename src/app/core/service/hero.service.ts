@@ -1,7 +1,7 @@
+
 import { MessageService } from './message.service';
 import { Injectable } from '@angular/core';
 import { Hero } from '../models/hero.model';
-import { HEROES } from './mock-heroes';
 import { Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
@@ -24,7 +24,7 @@ export class HeroService {
 
   getOne(id: number): Observable<Hero> {
 
-    return this.http.get<Hero>(`${this.heroesUrl}/${id}`)
+    return this.http.get<Hero>(this.getUrl(id))
       .pipe(
         tap(hero => this.log(`fetched ${this.descAttributes(hero)}`))
       )
@@ -38,9 +38,17 @@ export class HeroService {
   }
 
   update(hero: Hero): Observable<Hero> {
-    return this.http.put<Hero>(`${this.heroesUrl}/${hero.id}`, hero).pipe(
+    return this.http.put<Hero>(this.getUrl(hero.id), hero).pipe(
       tap(hero => this.log(`updated ${this.descAttributes(hero)}`))
-    ) 
+    )
+  }
+
+  delete(hero: Hero): Observable<any> {
+    return this.http
+      .delete<any>(this.getUrl(hero.id))
+      .pipe(
+        tap(() => this.log(`deleted ${this.descAttributes(hero)}`))
+      )
   }
 
   private descAttributes(hero: Hero): string {
@@ -49,6 +57,10 @@ export class HeroService {
 
   private log(message: string): void {
     this.messageService.add(`HeroService: ${message}`)
+  }
+
+  private getUrl(id: number): string {
+    return `${this.heroesUrl}/${id}`
   }
 
 
