@@ -13,6 +13,7 @@ import { ConfirmationDialogComponent } from 'src/app/core/components/confirmatio
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
+
   displayedColumns: string[] = ['id', 'name', 'actions']
 
   heroes: Hero[] = [];
@@ -52,6 +53,8 @@ export class HeroesComponent implements OnInit {
 
   }
 
-
+  onSelected(hero: Hero): void {
+    this.delete(hero);
+  }
 
 }

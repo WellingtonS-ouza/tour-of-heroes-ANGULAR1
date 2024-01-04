@@ -4,7 +4,10 @@
   <button class="add-button" color="accent" mat-fab routerLink="new">
     <mat-icon>add</mat-icon>
   </button>
+
 </div>
+
+<app-hero-search [label]="'Hero to delete'" (selected)="onSelected($event)" ></app-hero-search>
 
 
 <mat-table [dataSource]="heroes" class="mat-elevation-z8">

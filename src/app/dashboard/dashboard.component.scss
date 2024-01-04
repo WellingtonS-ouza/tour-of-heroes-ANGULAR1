@@ -1,18 +1,25 @@
+.first-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .content {
   display: flex;
   justify-content: space-between;
   gap: 12px;
 
- 
+
 }
 
 .pointer {
   cursor: pointer;
 }
 
-@media only screen and (max-width:375px) {
+@media only screen and (max-width:600px) {
   /* Estilos a serem aplicados quando a largura da tela for no máximo 600 pixels */
   .content {
     flex-direction: column;
+    color: green;
   }
 }
